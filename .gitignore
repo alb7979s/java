@@ -195,3 +195,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# 소스 테스트 하는 곳
+BOJ/src/

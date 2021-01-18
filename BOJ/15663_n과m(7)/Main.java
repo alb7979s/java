@@ -1,4 +1,4 @@
-// n°úm(5)
+// nê³¼m(7)
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,7 +19,6 @@ public class Main {
 		m = Integer.parseInt(st.nextToken());
 		sb = new StringBuilder();
 		arr = new int[n];
-		visit = new boolean[n];
 		st = new StringTokenizer(br.readLine(), " ");
 		for(int i=0; i<n; i++) arr[i] = Integer.parseInt(st.nextToken());
 		Arrays.sort(arr);
@@ -37,14 +36,10 @@ public class Main {
 			return ;
 		}
 		for(int i=0; i<n; i++) {
-			if(!visit[i]) {
-				visit[i] = true;
-				stack.push(arr[i]);
-				solve(cnt+1);
-				stack.pop();
-				visit[i] = false;
+			stack.push(arr[i]);
+			solve(cnt+1);
+			stack.pop();
 			}
-		}
 		return;
 	}
 }
