@@ -1,4 +1,3 @@
-//자바 진짜 세상에서 제일 불편한거 같은데요ㅜㅠㅜ 나만 그런가ㅜㅜㅜㅠ
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
