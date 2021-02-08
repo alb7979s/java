@@ -1,42 +1,35 @@
-// n과m(1)
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int n, m;
-	static boolean[] visit;
-	static Stack<Integer> stack = new Stack<>();
-	static int[] arr;
-	public static void main(String[] args) throws Exception{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		n = Integer.parseInt(st.nextToken());
-		m = Integer.parseInt(st.nextToken());
-		arr = new int[n];
-		visit = new boolean[n];
-		for(int i=0; i<n; i++) arr[i] = Integer.parseInt(st.nextToken());
-		solve(0);
+	static int stoi(String s) {
+		return Integer.parseInt(s);
 	}
-	
-	public static void solve(int cnt) {
-		if(cnt == m ) {
-			for(int x : stack) {
-				System.out.print(x + " ");
-			}
-			System.out.println();
-			return ;
+	static String[] arr;
+	static int[] visit;
+	static turn(int x, int d) {
+		visit[x] = true;
+		if( x - 1 >= 0 && !visit[x-1] && arr[x-1].charAt(2) != arr[x].charAt(6)) {
+			solve(x-1, -d);
 		}
-		for(int i=0; i<n; i++) {
-			if (!visit[i]) {
-				visit[i] = true;
-				stack.push(arr[i]);
-				solve(cnt+1);
-				stack.pop();
-				visit[i] = false;
-			}
+		if( x + 1 < 4 && !visit[x+1] && arr[x].charAt(2) != arr[x+1].charAt(6)) {
+			solve(x+1, -d);
 		}
-		return;
+	}
+	public static void main(String args[]) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		arr = new String[4];
+		for(int i = 0 ; i < 4; i++) {
+			arr[i] = br.readLine();
+		}
+		int k = stoi(br.readLine());
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		for(int i = 0; i < k; i++) {
+			int x, d;
+			x = stoi(st.nextToken());
+			d = stoi(st.nextToken());
+			visit = new int[4];
+			turn(x, d);
+		}
 	}
 }
