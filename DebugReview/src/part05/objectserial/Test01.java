@@ -14,9 +14,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+// Serializable => 마커 인터페이스 (마킹만함)
 class User implements Serializable{
 //	이렇게 버전정보 주고 클래스가 나중에 String email 이런식으로 바껴도 같은 버전정보면 오류 안나고 바꿀 수 있는 만큼만 바꿔줌
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;		//버전정보 안해주면 해시코드 값으로 비교해줌
 	String name;
 	transient String password;		// transient 하면 이 값 직렬화 안함
 	User(String name, String password){
@@ -36,6 +37,7 @@ class UserMng {
 		oos.close();
 	}
 	// deserialize
+	@SuppressWarnings("unchecked")
 	public void load() throws Exception {
 		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("user.dat"));
 		list = (List<User>)ois.readObject();

@@ -2,7 +2,6 @@ package part06.comp;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 class Food implements Comparable<Food> {
